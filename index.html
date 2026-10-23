@@ -103,7 +103,7 @@
   button.submit:focus-visible, .opt:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
   .err { color: #b3261e; font-size: 14px; margin-top: 10px; min-height: 1em; }
   .status { font-size: 14px; color: var(--muted); margin-top: 10px; }
-  .done { text-align: center; padding: 26px 18px; }
+  .done { text-align: center; padding: 48px 18px; margin-top: 60px; }
   .done h2 { font-size: 18px; color: var(--accent); }
   [hidden] { display: none !important; }
 </style>
@@ -225,7 +225,8 @@ submitBtn.addEventListener("click", async () => {
       if (el.id !== "done") el.hidden = true;
     });
     $("done").hidden = false;
-    window.scrollTo(0, 0);
+    // 모바일에서도 완료 문구가 화면 가운데 보이도록 스크롤합니다.
+    $("done").scrollIntoView({ block: "center", behavior: "smooth" });
   } catch (e) {
     submitBtn.disabled = false;
     submitBtn.textContent = "제출하기";
